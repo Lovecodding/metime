@@ -2,15 +2,15 @@ import { Component, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { AuthService } from './auth';
+import { AuthService } from '../../../../core/services/auth.service';
 
 @Component({
   selector: 'app-login',
   imports: [CommonModule, FormsModule],
-  templateUrl: './login.html',
-  styleUrls: ['./login.css'],
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css'],
 })
-export class Login {
+export class LoginComponent {
   username = '';
   password = '';
   errorMessage = signal<string>('');
@@ -67,4 +67,3 @@ export class Login {
     }, 500);
   }
 }
-

@@ -2,16 +2,17 @@ import { Component, OnInit, inject, signal, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { AuthService, User } from '../core/auth/auth';
-import { EditUserDialog } from './edit-user-dialog/edit-user-dialog';
+import { AuthService } from '../../../../core/services/auth.service';
+import { User } from '../../../../shared/models/user.model';
+import { EditUserDialogComponent } from '../../components/edit-user-dialog/edit-user-dialog.component';
 
 @Component({
   selector: 'app-admin',
   imports: [CommonModule, FormsModule],
-  templateUrl: './admin.html',
-  styleUrl: './admin.css',
+  templateUrl: './admin.component.html',
+  styleUrl: './admin.component.css',
 })
-export class Admin implements OnInit {
+export class AdminComponent implements OnInit {
   private authService = inject(AuthService);
   private dialog = inject(MatDialog);
   
@@ -55,7 +56,7 @@ export class Admin implements OnInit {
    * Open edit dialog for a user
    */
   openEditDialog(user: User): void {
-    const dialogRef = this.dialog.open(EditUserDialog, {
+    const dialogRef = this.dialog.open(EditUserDialogComponent, {
       width: '500px',
       data: { user: { ...user } },
       disableClose: false,
@@ -78,4 +79,3 @@ export class Admin implements OnInit {
     }
   }
 }
-

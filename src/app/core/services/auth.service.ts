@@ -1,14 +1,7 @@
 import { Injectable, signal, PLATFORM_ID, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { isPlatformBrowser } from '@angular/common';
-
-export interface User {
-  id: number;
-  username: string;
-  email: string;
-  role: string;
-  password?: string; // Optional, for demo purposes only (never store plain passwords in production!)
-}
+import { User } from '../../shared/models/user.model';
 
 @Injectable({
   providedIn: 'root'

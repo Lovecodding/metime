@@ -1,16 +1,16 @@
 import { Routes } from '@angular/router';
-import { Login } from './core/auth/login';
-import { Admin } from './admin/admin';
-import { authGuard } from './core/auth/auth-guard';
+import { LoginComponent } from './features/auth/pages/login-page/login.component';
+import { AdminComponent } from './features/admin/pages/admin-page/admin.component';
+import { authGuard } from './core/guards/auth.guard';
 
 export const routes: Routes = [
     { 
         path: 'login', 
-        component: Login 
+        component: LoginComponent 
     },
     { 
         path: 'admin', 
-        component: Admin,
+        component: AdminComponent,
         canActivate: [authGuard]  // Protected route - requires authentication
     },
     { 

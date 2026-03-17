@@ -2,17 +2,17 @@ import { Component, signal, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { User } from '../../core/auth/auth';
+import { User } from '../../../../shared/models/user.model';
 
 @Component({
   selector: 'app-edit-user-dialog',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: './edit-user-dialog.html',
-  styleUrl: './edit-user-dialog.css',
+  templateUrl: './edit-user-dialog.component.html',
+  styleUrl: './edit-user-dialog.component.css',
 })
-export class EditUserDialog {
-  dialogRef = inject<MatDialogRef<EditUserDialog>>(MatDialogRef);
+export class EditUserDialogComponent {
+  dialogRef = inject<MatDialogRef<EditUserDialogComponent>>(MatDialogRef);
   data = inject<{ user: User }>(MAT_DIALOG_DATA);
   
   errorMessage = signal<string>('');
