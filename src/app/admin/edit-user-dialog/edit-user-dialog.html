@@ -1,0 +1,83 @@
+<div class="dialog-container">
+  <div class="dialog-header">
+    <h2>Edit User</h2>
+    <button type="button" class="close-btn" (click)="onClose()">&times;</button>
+  </div>
+
+  <div class="dialog-content">
+    <form class="dialog-form" id="editUserForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="edit-username">Username <span class="required">*</span></label>
+        <input
+          type="text"
+          id="edit-username"
+          name="username"
+          [(ngModel)]="editForm.username"
+          required
+          minlength="3"
+          pattern="[a-zA-Z0-9_]{3,}"
+          placeholder="Enter username"
+        />
+        <small class="field-hint">Minimum 3 characters (letters, numbers, underscore)</small>
+      </div>
+
+      <div class="form-group">
+        <label for="edit-email">Email <span class="required">*</span></label>
+        <input
+          type="email"
+          id="edit-email"
+          name="email"
+          [(ngModel)]="editForm.email"
+          required
+          placeholder="Enter email"
+        />
+        <small class="field-hint">Valid email format required (e.g., user@example.com)</small>
+      </div>
+
+      <div class="form-group">
+        <label for="edit-password">Password <span class="required">*</span></label>
+        <input
+          type="text"
+          id="edit-password"
+          name="password"
+          [(ngModel)]="editForm.password"
+          required
+          minlength="4"
+          placeholder="Enter password"
+        />
+        <small class="field-hint">Minimum 4 characters</small>
+      </div>
+
+      <div class="form-group">
+        <label for="edit-role">Role <span class="required">*</span></label>
+        <select
+          id="edit-role"
+          name="role"
+          [(ngModel)]="editForm.role"
+          required
+        >
+          <option value="">-- Select Role --</option>
+          <option value="Administrator">Administrator</option>
+          <option value="Manager">Manager</option>
+          <option value="Editor">Editor</option>
+          <option value="User">User</option>
+        </select>
+        <small class="field-hint">Select user's role</small>
+      </div>
+
+      @if (errorMessage()) {
+        <div class="error-message">
+          {{ errorMessage() }}
+        </div>
+      }
+    </form>
+  </div>
+
+  <div class="dialog-actions">
+    <button type="button" class="btn-cancel" (click)="onClose()">Cancel</button>
+    <button type="submit" class="btn-save" form="editUserForm">
+      Save Changes
+    </button>
+  </div>
+</div>
+
